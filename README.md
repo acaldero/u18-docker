@@ -1,5 +1,4 @@
-# u18-docker
-docker ubuntu18
+# docker with ubuntu 18.04
 
 Usage: ./u18.sh <build|start|status|bash|stop>
 
