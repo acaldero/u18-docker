@@ -1,0 +1,22 @@
+
+version: "3.5"
+
+networks:
+  b0:
+    driver: bridge
+
+services:
+  node:
+    build:
+      context: ./
+      dockerfile: ./u18-dockerfile
+    image: u18:latest
+    container_name: u18
+    volumes:
+      - type: bind
+        source: .
+        target: /tutoria
+    #network_mode: host
+    networks:
+      - b0
+
