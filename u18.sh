@@ -7,9 +7,7 @@
 #
 
 if [ $# -eq 0 ]; then
-	echo ""
-	echo "Usage: $0 <build|start|status|bash|stop>"
-	echo ""
+	$0 help
 	exit
 fi
 
@@ -36,10 +34,21 @@ do
 	     stop)
 		docker-compose -f u18-dockercompose.yml down
 	     ;;
+	     cleanup)
+                docker rm      -f $(docker ps     -a -q)
+                docker rmi     -f $(docker images -a -q)
+                docker volume rm  $(docker volume ls -q)
+                docker network rm $(docker network ls|tail -n+2|awk '{if($2 !~ /bridge|none|host/){ print $1 }}')
+	     ;;
+	     help)
+		echo ""
+		echo "Usage: $0 <build|start|status|bash|stop|cleanup>"
+		echo ""
+	     ;;
 	     *)
 		echo ""
 		echo "Unknow command:"
-		echo "Usage: $0 <build|start|status|bash|stop>"
+                $0 help
 	     ;;
 	esac
 done
