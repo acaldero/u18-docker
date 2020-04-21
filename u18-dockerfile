@@ -21,6 +21,7 @@ RUN apt-get update && apt-get install -y --allow-downgrades --allow-change-held-
         python3-pip \
         libcurl3-dev \
         libfreetype6-dev \
+	libjson-c-dev \
         pkg-config \
         rsync \
         apt-utils \
@@ -28,6 +29,8 @@ RUN apt-get update && apt-get install -y --allow-downgrades --allow-change-held-
         sudo \
         gpg-agent \
         unzip \
+        doxygen \
+        valgrind \
         zip \
         python-setuptools \
         zlib1g-dev \
@@ -44,7 +47,7 @@ RUN apt-get update && apt-get install -y --allow-downgrades --allow-change-held-
 RUN echo "Europe/Madrid" > /etc/timezone
 #RUN dpkg-reconfigure -f noninteractive tzdata
 
-WORKDIR "/tutoria"
+WORKDIR "/work"
 
 CMD tail -f /dev/null
 

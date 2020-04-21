@@ -10,13 +10,11 @@ services:
     build:
       context: ./
       dockerfile: ./u18-dockerfile
-    image: u18:latest
-    container_name: u18
+    image: u18
     volumes:
       - type: bind
         source: .
-        target: /tutoria
-    #network_mode: host
+        target: /work
     networks:
       - b0
 
